@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>
+Air Quality Index in realtime from Thai-Nichi Institute of Technology
+</title>
+<head>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+
+<script>
+
+    $(function() {
+
+
+   var people = [];
+
+   $.getJSON('aqi.json', function(data) {
+       $.each(data.entry, function(i, f) {
+          var tblRow = "<tr>" + "<td>" + f.time + "</td>" +
+           "<td>" + f.pm25 + "</td>" + "<td>" + f.pm10 + "</td>" + "</tr>"
+           $(tblRow).appendTo("#userdata tbody");
+     });
+
+   });
+
+});
+</script>
+</head>
+
+<body>
+
+<div class="wrapper">
+<div class="profile">
+   <table id= "userdata" border="2">
+  <thead>
+            <th>Time</th>
+            <th>PM 2.5</th>
+            <th>PM 10</th>
+        </thead>
+      <tbody>
+
+       </tbody>
+   </table>
+
+</div>
+</div>
+
+</body>
+</html>
